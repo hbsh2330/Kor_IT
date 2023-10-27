@@ -3,6 +3,7 @@ package com.hbsh.studymember.controllers;
 import com.hbsh.studymember.entities.UserEntity;
 import com.hbsh.studymember.results.user.RegisterResult;
 import com.hbsh.studymember.services.UserService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,8 @@ public class UserController {
     public String postRegister(UserEntity user){
         System.out.println("user.getEmail()");
         RegisterResult result = this.userService.register(user);
-        return null;
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        return responseObject.toString();
     }
 }

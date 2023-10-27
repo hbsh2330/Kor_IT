@@ -131,7 +131,33 @@ registerForm.onsubmit = function(e) {
             return;
         }
         if (xhr.status >=200 && xhr.status < 300){
-
+            const responseObject = JSON.parse(xhr.responseText);
+            switch (responseObject['result']){
+                case 'failure':
+                    alert('알수 없는 이유로 회원가입에 실패하였습니다. 다음에 시도하여 주십시오')
+                    break;
+                case 'failure_duplicate_email':
+                    alert('해당 이메일은 사용중인 이메일입니다..')
+                    registerForm['email'].focus();
+                    registerForm['email'].select();
+                    break;
+                case 'failure_duplicate_nickname':
+                    alert('해당 닉네임은 이미 사용중인 닉네임입니다.')
+                    registerForm['nickname'].focus();
+                    registerForm['nickname'].select();
+                    break;
+                case 'failure_duplicate_contact':
+                    alert('해당 연락처는 이미 사용 중입니다.')
+                    registerForm['contactSecond'].focus();
+                    registerForm['contactSecond'].select();
+                    break;
+                case 'success':
+                    alert('성공적으로 회원가입 하였습니다. 확인 버튼을 클릭하면 로그인 페이지로 이동합니다.')
+                    location.href = './login';
+                    break;
+                default:
+                    alert('알수 없는 이유로 회원가입에 실패하였습니다. 다음에 시도하여 주십시오')
+            }
         } else {
             alert('서버와 통신하는 도중 오류가 발생하였습니다. 잠시후 다시 시도해 주세요')
         }

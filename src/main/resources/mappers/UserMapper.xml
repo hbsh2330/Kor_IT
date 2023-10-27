@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbsh.studymember.mapper.UserMapper">
+<insert id="insertUser" parameterType="com.hbsh.studymember.entities.UserEntity">
+    INSERT INTO `study_member`.`users`
+    ( `email`
+    , `password`
+    , `nickname`
+    , `contact_first`
+    , `contact_second`
+    , `contact_third`
+    , `address_postal`
+    , `address_primary`
+    , `address_secondary`
+    , `registered_at`
+    , `suspended_flag`
+    , `deleted_flag`)
+    VALUES (#{email},
+            #{password}, #{nickname}, #{contactFirst}, #{contactSecond}, #{contactThird}, #{addressPostal},
+            #{addressPrimary}, #{addressSecondary}, #{registeredAt}, #{isSuspended}, #{isDeleted})
+</insert>
+
+    <select id="selectUserByEmail"  resultType="com.hbsh.studymember.entities.UserEntity">
+        SELECT
+        `email` AS `email`
+        `password` AS `password`
+        `nickname` AS `nickname`
+        `contact_first` AS `contactFirst`
+        `contact_second` AS `contactSecond`
+        `contact_third` AS `contactThird`
+        `address_postal` AS `addressPostal`
+        `address_primary` AS `addressPrimary`
+        `address_secondary` AS `addressSecondary`
+        `registered_at` AS `registeredAt`
+        `suspended_flag` AS `isSuspended`
+        `deleted_flag` AS `isDeleted`
+        FROM `study_member.users
+        WHERE email = #{email}
+        LIMIT 1
+    </select>
+
+
+
+</mapper>
