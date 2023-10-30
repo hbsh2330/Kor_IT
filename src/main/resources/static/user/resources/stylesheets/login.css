@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+body {
+    min-height: 100vh;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#loginForm {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.0625rem #17202a10;
+    padding: 2rem 3rem;
+    transition-duration: 250ms;
+    transition-property: box-shadow;
+    transition-timing-function: ease;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#loginForm:focus-within,
+#loginForm:hover {
+    box-shadow: 0 0 1rem 0.0625rem #17202a15;
+}
+
+#loginForm .input {
+    border: 0.0625rem solid #d5d8dc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    padding: 0.625rem 0.75rem;
+    transition-duration: 250ms;
+    transition-property: border;
+    transition-timing-function: ease;
+}
+
+#loginForm .input:focus {
+    border: 0.0625rem solid #5dade2;
+}
+
+#loginForm > .title {
+    border-bottom: 0.0625rem solid #d5d8dc;
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 0.0625rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+#loginForm > * + * {
+    margin-top: 0.5rem;
+}
+
+#loginForm > .label {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#loginForm > .label > .text {
+    color: #566573;
+    font-size: 0.9rem;
+    margin-bottom: 0.375rem;
+    transition-duration: 250ms;
+    transition-property: color;
+    transition-timing-function: ease;
+}
+
+#loginForm > .label:focus-within > .text {
+    color: #3498db;
+}
+
+#loginForm > .button-container {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+#loginForm > .button-container > .button {
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    transition-duration: 250ms;
+    transition-property: filter;
+    transition-timing-function: ease;
+}
+
+#loginForm > .button-container > .button:hover {
+    filter: brightness(95%);
+}
+
+#loginForm > .button-container > .button.cancel {
+    background-color: #ec7063;
+    color: #ffffff;
+}
+
+#loginForm > .button-container > .button.submit {
+    background-color: #28b463;
+    color: #ffffff;
+}
+
+#loginForm > .menu {
+    font-size: 0.9rem;
+    margin: 0.75rem 0;
+}
+
+#loginForm > .menu > .item + .item {
+    margin-top: 0.1rem;
+}
+
+#loginForm > .menu > .item > .link {
+    color: #3498db;
+    margin-left: 0.1rem;
+}
+
+#loginForm > .menu > .item > .link:hover {
+    text-decoration: underline;
+}
+#loginForm > .button-container {
+    display: grid;
+}

@@ -132,8 +132,7 @@ body {
 #registerForm > .button-container {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 2rem;
+    grid-template-columns: minmax(0, 1fr);
 }
 
 #registerForm > .button-container > .button {
@@ -192,6 +191,9 @@ body {
     transition-duration: 250ms;
     transition-property: top;
     transition-timing-function: ease;
+}
+#LoginForm > .menu > .item > .link:hover {
+    text-decoration: underline;
 }
 
 #addressFinder.visible > .dialog {

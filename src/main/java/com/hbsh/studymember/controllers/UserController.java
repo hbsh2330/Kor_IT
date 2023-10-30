@@ -1,6 +1,7 @@
 package com.hbsh.studymember.controllers;
 
 import com.hbsh.studymember.entities.UserEntity;
+import com.hbsh.studymember.results.user.LoginResult;
 import com.hbsh.studymember.results.user.RegisterResult;
 import com.hbsh.studymember.services.UserService;
 import org.json.JSONObject;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.security.NoSuchAlgorithmException;
 
 
 @Controller
@@ -24,6 +28,19 @@ public class UserController {
         this.userService = userService;
     }
 
+    @RequestMapping(value = "login", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
+    public ModelAndView getLogin(){
+        return new ModelAndView("user/login");
+    }
+    @RequestMapping(value = "login", method = RequestMethod.POST, produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String postLogin(HttpSession session, UserEntity user){
+        LoginResult result = this.userService.login(user);
+        if (result == LoginResult.SUCCESS){
+            session.setAttribute("user", user);
+        }
+        return null;
+    }
     @RequestMapping(value = "register", method = RequestMethod.GET)
     public ModelAndView getRegister(){
         ModelAndView modelAndView = new ModelAndView();
@@ -36,7 +53,7 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE)
 
     @ResponseBody
-    public String postRegister(UserEntity user){
+    public String postRegister(UserEntity user) throws NoSuchAlgorithmException {
         System.out.println("user.getEmail()");
         RegisterResult result = this.userService.register(user);
         JSONObject responseObject = new JSONObject();
