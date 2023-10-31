@@ -8,10 +8,14 @@
     <title>로그인</title>
     <link rel="stylesheet" th:href="@{/resources/stylesheets/common.css}">
     <link rel="stylesheet" th:href="@{/user/resources/stylesheets/login.css}">
+    <script th:if="${#session != null && #session.getAttribute('user') != null}">
+        alert('이미 로그인되어있습니다. 확인버튼을 클릭하면 마이페이지로 이동합니다.');
+        location.href = "./my"
+    </script>
     <script defer th:src="@{/user/resources/scripts/login.js}"></script>
 </head>
 <body>
-<form id="loginForm">
+<form id="loginForm" th:if="${#session == null || #session.getAttribute('user') == null}">
     <h1 class="title">로그인</h1>
     <label class="label">
         <span class="text">이메일</span>

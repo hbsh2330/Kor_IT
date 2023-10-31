@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>마이페이지</title>
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/common.css}">
+    <link rel="stylesheet" th:href="@{/user/resources/stylesheets/my.css}">
+    <script th:if="${#session == null || #session.getAttribute('user') == null}">
+        alert('로그인 후 이용할 수 있습니다.확인 버튼을 클릭하면 로그인 페이지로 이동합니다.');
+        location.href = './login';
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script defer th:src="@{/user/resources/scripts/my.js}"></script>
+</head>
+<body>
+<form id="myForm">
+    <h1 class="title">회원정보 수정</h1>
+    <label class="label">
+        <span class="text">이메일 (수정 불가)</span>
+        <input disabled class="input" th:value="${session.user.getEmail()}">
+    </label>
+    <label class="label">
+        <span class="text">현재 비밀번호</span>
+        <input autofocus required class="input" maxlength="50" minlength="4" name="passwordCheck" placeholder="현재 비밀번호" spellcheck="false" type="password">
+    </label>
+    <span class="password-container">
+        <input class="checkbox" name="passwordChange" id="passwordChange" type="checkbox" >
+        <label class="checker-container" for="passwordChange">
+            <span class="checker"></span>
+            <span class="text" >비밀번호 변경하기</span>
+        </label>
+        <span class="input-container">
+            <label class="label">
+                <span class="text">새 비밀번호</span>
+                <input class="input" maxlength="50" minlength="4" name="newPassword" placeholder="새 비밀번호 (4자 이상 50자 이하)" spellcheck="false" type="password">
+            </label>
+            <label class="label">
+                <span class="text">새 비밀번호 확인</span>
+                <input class="input" maxlength="50" minlength="4" name="newPasswordCheck" placeholder="새 비밀번호 확인" spellcheck="false" type="password">
+            </label>
+        </span>
+    </span>
+
+    <label class="label">
+        <span class="text">닉네임</span>
+        <input required class="input" maxlength="10" minlength="2" name="nickname" placeholder="닉네임 (2자 이상 10자 이하)" spellcheck="false" type="text" th:value="${session.user.getNickname()}">
+    </label>
+    <label class="label contact">
+        <span class="text">연락처</span>
+        <span class="wrapper">
+            <input required class="input" minlength="3" maxlength="4" name="contactFirst" placeholder="010" spellcheck="false" type="tel" th:value="${session.user.getContactFirst()}">
+            <span class="dash">-</span>
+            <input required class="input" minlength="3" maxlength="4" name="contactSecond" placeholder="0000" spellcheck="false" type="tel" th:value="${session.user.getContactSecond()}">
+            <span class="dash">-</span>
+            <input required class="input" minlength="4" maxlength="4" name="contactThird" placeholder="0000" spellcheck="false" type="tel" th:value="${session.user.getContactThird()}">
+        </span>
+    </label>
+    <label class="label address">
+        <span class="text">주소</span>
+        <span class="wrapper">
+            <span class="postal-wrapper">
+                <input readonly required class="input" maxlength="5" minlength="5" name="addressPostal" placeholder="우편번호" spellcheck="false" type="text" th:value="${session.user.getAddressPostal()}">
+                <input class="button" name="addressFind" type="button" value="주소 찾기" >
+            </span>
+            <input readonly required class="input" maxlength="100" minlength="5" name="addressPrimary" placeholder="기본 주소 (주소 찾기 버튼을 클릭해 주세요.)" spellcheck="false" type="text" th:value="${session.user.getAddressPrimary()}">
+            <input class="input" maxlength="100" name="addressSecondary" placeholder="상세 주소" spellcheck="false" type="text" th:value="${session.user.getAddressSecondary()}">
+        </span>
+    </label>
+    <div class="button-container">
+        <input class="button delete" name="delete" type="button" value="탈퇴하기">
+        <input class="button submit" type="submit" value="수정하기">
+    </div>
+</form>
+<div id="addressFinder">
+    <img class="close" rel="close" th:src="@{/user/resources/images/register.addressFinder.close.png}" alt="닫기">
+    <div class="dialog" rel="dialog"></div>
+</div>
+</body>
+</html>

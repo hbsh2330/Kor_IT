@@ -45,10 +45,20 @@ public class UserService {
         }
         user.setEmail(dbUser.getEmail());
         user.setPassword(dbUser.getPassword());
-
+        user.setNickname(dbUser.getNickname());
+        user.setContactFirst(dbUser.getContactFirst());
+        user.setContactSecond(dbUser.getContactSecond());
+        user.setContactThird(dbUser.getContactThird());
+        user.setAddressPostal(dbUser.getAddressPostal());
+        user.setAddressPrimary(dbUser.getAddressPrimary());
+        user.setAddressSecondary(dbUser.getAddressSecondary());
+        user.setRegisteredAt(dbUser.getRegisteredAt());
+        user.setSuspended(dbUser.isSuspended());
+        user.setDeleted(dbUser.isDeleted());
 
         return LoginResult.SUCCESS;
     }
+
     public RegisterResult register(UserEntity user) throws NoSuchAlgorithmException {
         if (user.getEmail() == null ||
                 user.getPassword() == null ||
@@ -86,8 +96,8 @@ public class UserService {
             int insertResult = this.userMapper.insertUser(user);
             if (insertResult == 0) {
                 return RegisterResult.FAILURE;
-            } else {
-
+            }
+            else {
                 return RegisterResult.SUCCESS;
             }
         }

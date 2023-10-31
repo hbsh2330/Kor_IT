@@ -1,0 +1,273 @@
+@charset "UTF-8";
+
+body {
+    min-height: 100vh;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#myForm {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.0625rem #17202a10;
+    padding: 2rem 3rem;
+    transition-duration: 250ms;
+    transition-property: box-shadow;
+    transition-timing-function: ease;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#myForm:focus-within,
+#myForm:hover {
+    box-shadow: 0 0 1rem 0.0625rem #17202a15;
+}
+
+#myForm .input {
+    border: 0.0625rem solid #d5d8dc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    padding: 0.625rem 0.75rem;
+    transition-duration: 250ms;
+    transition-property: border;
+    transition-timing-function: ease;
+}
+
+#myForm .input:focus {
+    border: 0.0625rem solid #5dade2;
+}
+
+#myForm > .title {
+    border-bottom: 0.0625rem solid #d5d8dc;
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 0.0625rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+#myForm > * + * {
+    margin-top: 0.5rem;
+}
+
+#myForm .label {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#myForm .label > .text {
+    color: #566573;
+    font-size: 0.9rem;
+    margin-bottom: 0.375rem;
+    transition-duration: 250ms;
+    transition-property: color;
+    transition-timing-function: ease;
+}
+
+#myForm .label:focus-within > .text {
+    color: #3498db;
+}
+
+#myForm > .label.contact > .wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#myForm > .label.contact > .wrapper > .input {
+    width: 4rem;
+    text-align: center;
+}
+
+#myForm > .label.contact > .wrapper > .dash {
+    font-size: 1.5rem;
+    font-weight: 200;
+    line-height: 100%;
+    margin: 0 0.25rem;
+}
+
+#myForm > .label.address > .wrapper {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#myForm > .label.address > .wrapper > * + * {
+    margin-top: 0.375rem;
+}
+
+#myForm > .label.address > .wrapper > .postal-wrapper {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    gap: 0.375rem;
+    justify-content: flex-start;
+}
+
+#myForm > .label.address > .wrapper > .postal-wrapper > .button {
+    background-color: #eaecee;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    filter: brightness(100%);
+    padding: 0.5rem 0.75rem;
+    transition-duration: 250ms;
+    transition-property: filter;
+    transition-timing-function: ease;
+}
+
+#myForm > .label.address > .wrapper > .postal-wrapper > .button:hover {
+    filter: brightness(95%);
+}
+
+#myForm > .button-container {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+#myForm > .button-container > .button {
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    transition-duration: 250ms;
+    transition-property: filter;
+    transition-timing-function: ease;
+}
+
+#myForm > .button-container > .button:hover {
+    filter: brightness(95%);
+}
+
+#myForm > .button-container > .button.delete {
+    background-color: #ec7063;
+    color: #ffffff;
+}
+
+#myForm > .button-container > .button.submit {
+    background-color: #28b463;
+    color: #ffffff;
+}
+#myForm > .password-container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#myForm > .password-container > .checker-container {
+    cursor: pointer;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#myForm > .password-container > .checker-container > .checker {
+    width: 1.25rem;
+    height: 1.25rem;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0.0625rem solid #d5d8dc;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    transition-duration: 250ms;
+    transition-property: background-color, border;
+    transition-timing-function: ease;
+}
+
+#myForm > .password-container > .checkbox:checked + .checker-container > .checker {
+    background-color: #5dade2;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA1ElEQVR4nO3TMUuCURSH8RtBJBbZELQIfYREaIoWP0AELS6t79hXcLfZVcXZ1dE+RLQ0NBUE0dDWUP7ixVuT8friHRx61nN4zvlz7wnhn7Igw3Eq2YU5nRSyPTzhGfsphIO43XkKWQszjFLIqnjEKw5SCHsx6mVR4ya2C3rO8IXxMpNvYozTP+oVPOANh8sIG3jBB9oL6t0Y9apQ9gOOcB9f8Pez4gSfmISyoIZp3KaPHdzhHfXSwhxsYRil+SXkZGFVcB3j32JjZWGYS5vYTSJbC74BNVHwG2e/cT0AAAAASUVORK5CYII=");
+    border: 0.0625rem solid #5dade2;
+}
+#myForm > .password-container > .input-container {
+    max-height: 0;
+    overflow: hidden;
+    transition-duration: 500ms;
+    transition-property: max-height;
+    transition-timing-function: ease;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#myForm > .password-container > .checkbox:checked ~ .input-container{
+    max-height: 10rem;
+}
+
+#myForm > .password-container > .checkbox {
+    display: none;
+}
+
+#addressFinder{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #17202a75;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition-duration: 250ms;
+    transition-property: opacity;
+    transition-timing-function: ease;
+    z-index: 1;
+}
+#addressFinder.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#addressFinder > .dialog {
+    top: calc(50% + 1rem);
+    left: 50%;
+    width: 20rem;
+    height: 30rem;
+    background-color: #ffffff;
+    box-shadow: 0 0 1rem 0.0625rem #17202a37;
+    overflow: hidden;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition-duration: 250ms;
+    transition-property: top;
+    transition-timing-function: ease;
+}
+#LoginForm > .menu > .item > .link:hover {
+    text-decoration: underline;
+}
+
+#addressFinder.visible > .dialog {
+    top: 50%;
+}
+
+#addressFinder > .close {
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    cursor: pointer;
+    filter: brightness(90%);
+    position: absolute;
+    transition-duration: 250ms;
+    transition-property: filter;
+    transition-timing-function: ease;
+    z-index: 1;
+}
+
+#addressFinder > .close:hover {
+    filter: brightness(100%);
+}
